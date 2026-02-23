@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Air pollution mapping</title>
+    <link rel="stylesheet" href="/static/style.css"> <!-- Optionnel -->
+</head>
+<body>
+    <h1>Air pollution mapping</h1>
+
+    <form action="/api/v1/map/" method="get" target="_blank">
+        <label for="polluant">Polluant :</label>
+        <select name="polluant" id="polluant" required>
+            {% for polluant in polluants %}
+                <option value="{{ polluant }}">{{ polluant }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="max_level">Limit value (µg/m³) :</label>
+        <input type="number" name="max_level" id="max_level" placeholder="Ex: 40" min="0">
+
+        <button type="submit">Display the map</button>
+    </form>
+
+    <p>Or consult the <a href="/docs">API documentation</a>.</p>
+</body>
+</html>
